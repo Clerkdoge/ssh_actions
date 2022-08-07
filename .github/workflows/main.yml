@@ -20,6 +20,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@main
 
+      - name: Clean Up
+        run: |
+          docker rmi `docker images -q`
+          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d
+          sudo apt -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
+          sudo apt update
+          sudo apt -y autoremove --purge
+          sudo apt clean
+
       - name: Start SSH via tmate
         uses: P3TERX/ssh2actions@main
         env:
