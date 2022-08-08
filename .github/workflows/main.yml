@@ -26,6 +26,9 @@ jobs:
 #          python-version: '3.9'
 #          architecture: 'x64'
 
+       - name: Cleanup
+         uses: rokibhasansagar/slimhub_actions@main
+
 #      - name: Clean Up
 #        run: |
 #          docker rmi `docker images -q`
